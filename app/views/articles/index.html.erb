@@ -1,0 +1,35 @@
+<div class="container">
+	
+	<h1 align="center"> AMITEJ KALRA'S BLOG </h1>
+
+	<% @articles.each do |article| %> 
+	<div class="main">     
+		<div class="title">
+			<b align="center"><div><h2><%= article.title %></h2></div></b>
+			<br><br>
+			<div><%= article.body %></div>
+			<% @id = article.id %>
+		<% article.comments.each do |d| %>
+			<br>
+			<br>
+			<div class="cpath"><%= d.user.email %> says </div>
+			<div class="cpath2"><%= d.comment %></div><div class="cpath1">
+			<% if d.user==current_user %><%= link_to "edit" , edit_comment_path(:id=>d.id) %>
+			<%= link_to "delete" ,comment_path(:id=>d.id) ,method: :delete  %><% end %></div>
+		<% end %>
+		<% @comment=Comment.new %>
+
+		 <% if user_signed_in? %> 
+		 	<%= render 'commentform' %>
+		 	<% if article.user==current_user %>
+				<br><br>
+				<%= link_to 'Edit', edit_article_path(article) %>
+				<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		<% end %>
+			</div>
+</div>
+	<% end %>
+
+<%= will_paginate @articles %>
+</div>

@@ -1,0 +1,16 @@
+<div class="newcontainer">
+<h1 align="center">INFORMATION</h1>
+
+<div class= "main">
+	
+<div class="pic"><%= image_tag @userprofile.photo.url(:medium) %></div>
+<div class="info">
+<div>NAME-<%= @userprofile.name %></div>
+<div>GENDER-<%= @userprofile.gender %></div>
+<div>DATE OF BIRTH-<%= @userprofile.dob %></div>
+<div>ADDRESS-<%= @userprofile.address %></div>
+</div>
+</div>
+<%= link_to 'Edit Profile', edit_userprofile_path %>
+<%= link_to 'Back', articles_path %>
+</div>

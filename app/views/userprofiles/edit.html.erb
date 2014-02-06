@@ -1,0 +1,40 @@
+<div class="newcontainer">
+<%= form_tag userprofile_path, method: :patch , :multipart => true  %>
+  <div class= "main">
+    
+    <div class="pic"> <%= image_tag @userprofile.photo.url(:medium) %>
+ </div>
+  <div class="pic"><%= file_field_tag :photo %>
+ </div>
+ <div class="info">
+<div><%= label_tag :name %>
+<%= text_field_tag :name %></div>
+<div><%= label_tag :gender %>
+<%= text_field_tag :gender %></div>
+<div><%= label_tag :dob %>
+<%= text_field_tag :dob %></div> 
+<div><%= @user.email %></div>
+<div><%= label_tag :address %>
+<%= text_field_tag :address %></div>
+</div>
+
+          </div>
+             <div>
+           <%= submit_tag %>
+    </div>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this rprofile from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      
+      </ul>
+    </div>
+</div>
+  <div class="actions">
+    
+<% end %>
+<% end %>
+</div>

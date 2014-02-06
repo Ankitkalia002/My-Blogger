@@ -1,0 +1,24 @@
+<%= form_for(@article) do |f| %>
+
+ 
+<div align="center"><%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    
+      <% @article.errors.full_messages.each do |msg| %>
+        <br><%= msg %>
+      <% end %>
+    
+    </div>
+  <% end %>
+<%= f.text_area :body, size: "90x25", placeholder: "Enter description here" %>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

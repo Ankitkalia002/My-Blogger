@@ -1,0 +1,10 @@
+<%= form_for(@comment) do |f| %>
+ <%= f.text_area :comment, size: "30x05", placeholder: "Enter Comment here" %>
+
+
+  
+
+  <div class="actions">
+    <%= f.submit :class => 'click'%>
+  </div>
+<% end %>

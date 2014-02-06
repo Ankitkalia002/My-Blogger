@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogger</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="nav">	
+	<div class="sam">	<%= link_to "Home" , articles_path %></div>
+	<% if user_signed_in? %>
+	<div class="sam"><%= link_to "Profile", userprofile_path(:id) %></div>
+	<% end %>
+		<% if user_signed_in? && current_user.email == 'ankit3732@gmail.com' %>
+			<div class="same">
+				<%= link_to "New" , new_article_path %>
+			</div>
+
+		<% end %>
+		<% if !user_signed_in? %>
+			<div class="same1"><%= link_to "signup", new_user_registration_path %></div>
+			<div class="same1"><%= link_to "signin", new_user_session_path %></div>
+		<% end %>
+		<% if user_signed_in? %>
+		<div class="same2">
+			<div class="profilepic"><%=link_to image_tag(current_user.photo.url(:thumb)), userprofile_path(:id) %></div>
+			<%= current_user.email %>
+		<%= link_to 'Sign_Out',  destroy_user_session_path, method: :delete %></div> 
+ 		<% end %>
+	</div>
+
+<%= yield %>
+
+</body>
+</html>
