@@ -33,3 +33,24 @@
 
 <%= will_paginate @articles %>
 </div>
+
+<script>
+$(window).resize(function(){
+    $("html").width($(window).width());
+});
+$(window).resize(function(){
+    $(".container").width($(window).width());
+});
+$(window).resize(function(){
+    $("html").height($(window).height());
+});
+$(window).resize(function(){
+    $(".container").height($(window).height());
+}); 
+$(window).resize(function(){
+    $(".nav").width($(window).width());
+});
+$(window).resize(function(){
+    $(".nav").width($(window).width());
+});  
+</script>
