@@ -1,5 +1,5 @@
 <div class="newcontainer">
-<%= form_tag userprofile_path, method: :patch , :multipart => true  %>
+<%= form_tag edit_userprofile_path, method: :patch , :multipart => true  %>
   <div class= "main">
     
     <div class="pic"> <%= image_tag @userprofile.photo.url(:medium) %>
