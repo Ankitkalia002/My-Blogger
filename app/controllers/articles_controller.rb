@@ -4,12 +4,17 @@ def index
 @articles=Article.all.paginate(:page => params[:page],:per_page =>1)
 
 @comment=Comment.all
+@articles1 = Article.order('comments_count DESC').all
 end
 def new
 @article=Article.new
 	end
 def show
  @article=Article.find(params[:id])
+end
+def popularblog
+  @articles = Article.order('comments_count DESC').all
+  
 end
 def edit
   @article=Article.find(params[:id])
