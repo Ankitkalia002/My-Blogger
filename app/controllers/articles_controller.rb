@@ -1,8 +1,7 @@
 class ArticlesController < ApplicationController
 
 def index
-
-@articles=Article.all.paginate(:page => params[:page], :per_page => 2)
+@articles=Article.all.paginate(:page => params[:page],:per_page =>1)
 
 @comment=Comment.all
 end
@@ -28,6 +27,7 @@ def edit
         format.html { render action: 'edit' }
         format.json { render json: @articles.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
@@ -35,16 +35,24 @@ def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.body=params[:article][:body]
-
-    respond_to do |format|
+    
       if @article.save
-        format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @article }
+
+        #redirect_to articles_path
+        respond_to do |format|
+          format.js { render 'articlesave' }
+        end  
+        #format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
+        
       else
+        #debugger
+        respond_to do |format|
         format.html { render action: 'new' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.js { render 'reload' }
+        end
       end
-    end
+  
   end
   def destroy
   	@article = Article.find(params[:id])

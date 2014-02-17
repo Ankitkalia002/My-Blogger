@@ -1,16 +1,40 @@
-<div class="newcontainer">
+<div class="container-fluid">  
 <h1 align="center">INFORMATION</h1>
 
-<div class= "main">
+   
+		<div class="row-fluid">
+		
+				   <div class="span6">
+				   	        
 	
-<div class="pic"><%= image_tag @userprofile.photo.url(:medium) %></div>
-<div class="info">
-<div>NAME-<%= @userprofile.name %></div>
-<div>GENDER-<%= @userprofile.gender %></div>
-<div>DATE OF BIRTH-<%= @userprofile.dob %></div>
-<div>ADDRESS-<%= @userprofile.address %></div>
-</div>
-</div>
+                                                 <%= image_tag (@userprofile.user_image(:large)) %>
+                                                 </div>
+              <div class="span6">
+                   <h4>
+                   	   <%= label_tag :name %>     <%= @userprofile.name %>
+                   </h4>
+                        <h4>  
+                        <%= label_tag :Gender %>                       
+	                        <%= @userprofile.gender %>
+                        </h4>
+                              <h4>
+                              	<%= label_tag :DOB %>  
+	                                <%= @userprofile.dob %>
+                              </h4>
+                            <h4>
+                            	<%= label_tag :Address %>  
+	                          <%= @userprofile.address %>
+                            </h4>
+              </div>
+       </div>
+       
+<% if user_signed_in? %>
+<% if @userprofile.id==current_user.id %> 
+<div class="btn">
 <%= link_to 'Edit Profile', edit_userprofile_path %>
+</div>
+<% end %><% end %>
+<div class="btn">
 <%= link_to 'Back', articles_path %>
+</div>
 </div>

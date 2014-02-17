@@ -1,61 +1,44 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com
-.sign{display: inline-block;vertical-align: top;margin-left: 1032px;}
-.new{width: 50px;
-text-align: center;}
-.main{border-top: 1px solid grey;background:rgba(37, 104, 66, 0.25);text-align:justify;
-
-padding-bottom: 50px; font-weight:500;width: 70%;padding-bottom: 200px;
-align-content: center;
-margin-left: auto;
-margin-right:auto;
-margin-top: 50px;
-padding-top: 50px;
-padding-left: 31px;
-padding-right: 31px;color:white; }
-.show{display: inline-block;
-margin-left: 15px;color: white;
-text-align: center;} 
-.title{display: inline-block;}
-a {text-decoration: none;color: white;}
-.container{color:white; background-image: url(http://eventsonhand.com/wp-content/uploads/2013/07/blurred-background-10-2000x1250.jpg);background-repeat: no-repeat;
-background-size: 100% 100%; }
-h1{margin-top: 0px;background:rgba(67, 173, 144, 0.64);}
-body{font-family: 'open sans'; font-weight:100;height:100%;
+.navbar{
+margin-bottom:0px;
+height:20%;
 }
-.content{color:white;}
-.click{background: rgba(66, 102, 79, 0.61);
-  
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: 'open-sans';
-  color: #ffffff;
-  padding: 2px 2px 2px 2px;
-  text-decoration: none;}
-  .nav{padding-bottom: 60px;background-image: url(http://eventsonhand.com/wp-content/uploads/2013/07/blurred-background-10-2000x1250.jpg);
-font-size: 20px;}
-.same{display:inline-block;float: left;padding-left: 20px;
-position: absolute;}
-.same1{display:inline-block;float: right; margin-right:20px;}
-.same2{display:inline-block;text-align: center;
-float: left;
-margin-right: 20px; float:right;}
-.same3{display: inline-block;
-float: right;
-position: absolute;
-top: 0px;
-right: 0px;}
-h1{margin-bottom:0px;font-family:'open-sans';font-weight: 300;
-color: azure;}
-html{height:100%;}
-.newcontainer{color:white; background-image: url(http://eventsonhand.com/wp-content/uploads/2013/07/blurred-background-10-2000x1250.jpg);background-repeat: no-repeat;
-background-size: 100% 100%;height:100%;padding-top: 1px;}
-.cpath1{display:inline-block;margin-left:25px;}
-.cpath{display:inline-block;font-weight: 100;}
-.formart{display:block;margin-top: 40px;}
-.cpath2{display: inline-block;background-color: white; color: black;}
-.sam{display: inline-block;margin-right:20px;}
-.profilepic{display:inline-block;}
-.profilepic:hover{}
+.navbar-inner{
+height:60px;
+}
+.myCarousel{
+height:500px;
+}
+.carousel-inner{height:500px;
+}
+.desc{font-size:20px;
+}
+#article_body{
+width:500px;
+height:300px;
+}
+
+.span4{min-height:200px;
+}
+.well{
+height: 400px;
+overflow-y: scroll;
+}
+.span6{ height:400px;
+	margin-top:auto;
+	margin-bottom:auto;
+}
+.row-fluid{
+	margin-top:40px;
+	margin-bottom:40px;
+}
+.container-fluid
+{background-image: url(http://subtlepatterns.com/patterns/ps_neutral.png); background-position: initial initial; background-repeat: initial initial;}
+.carousel{
+	margin-bottom:0px;
+}
+#footer{
+background-color:black;
+padding-top: 20px;
+padding-bottom: 20px;
+margin:0px;}
+#errortext{display:inline-block;}

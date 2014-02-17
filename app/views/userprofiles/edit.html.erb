@@ -1,27 +1,45 @@
-<div class="newcontainer">
-<%= form_tag userprofile_path, method: :patch , :multipart => true  %>
-  <div class= "main">
+<div class="container-fluid"> 
+<h1 align="center">INFORMATION</h1>    
+    <div class="row-fluid">
     
-    <div class="pic"> <%= image_tag @userprofile.photo.url(:medium) %>
- </div>
-  <div class="pic"><%= file_field_tag :photo %>
- </div>
- <div class="info">
-<div><%= label_tag :name %>
-<%= text_field_tag :name %></div>
-<div><%= label_tag :gender %>
-<%= text_field_tag :gender %></div>
-<div><%= label_tag :dob %>
-<%= text_field_tag :dob %></div> 
-<div><%= @user.email %></div>
-<div><%= label_tag :address %>
-<%= text_field_tag :address %></div>
-</div>
-
+           <div class="span6">
+                            <%= form_tag userprofile_path, method: :patch , :multipart => true  %>
+                            <%= image_tag (@userprofile.user_image(:large)) %>
+           
+                   
           </div>
-             <div>
-           <%= submit_tag %>
+               <div class="span6">
+                             <div>
+                                  <%= label_tag :Name %>
+                                   <%= text_field_tag :name,@user.name %>
+                             </div>
+                             <div>
+                                     <%= label_tag :Gender%>
+                                     <%= select_tag "gender", "<option>Male</option>""<option>Female</option>" .html_safe %>
+                            </div>
+                             <div>
+                             <%= label_tag :DOB %>
+
+                             <%= text_field_tag :dob,@user.dob %>
+                             </div> 
+                          <div>
+                             <%= label_tag :Email %>
+                             <span class="input uneditable-input"><%= @user.email %>
+                          </span></div>
+                         <div>
+                           <%= label_tag :Address %>
+                           <%= text_field_tag :address ,@user.address %>
+                         </div>
+                         <div>
+                            <%= file_field_tag :photo %>
+                  </div>
+                </div>
     </div>
+
+ <div align="center"><%= submit_tag %></div>
+</div>
+          
+             
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this rprofile from being saved:</h2>
@@ -32,9 +50,14 @@
       
       </ul>
     </div>
-</div>
   <div class="actions">
     
 <% end %>
 <% end %>
 </div>
+<script>
+$(document).ready(function(){
+   $('#dob').datepicker();
+ })
+$('.typeahead').typeahead()
+   </script>

@@ -1,6 +1,6 @@
  
 <%= form_for(@comment) do |f| %>
- <%= f.text_area :comment, size: "30x05", placeholder: "Enter Comment here" %>
+ <%= f.text_area :comment, size: "100x05", placeholder: "Enter Comment here" %>
 
 <%= f.hidden_field :article_id, :value=> @id %>
 <%= f.hidden_field :user_id, :value=> current_user.id %>
@@ -8,6 +8,6 @@
   
 
   <div class="actions">
-    <%= f.submit :class => 'click'%>
+   <%= f.submit %>
   </div>
 <% end %>

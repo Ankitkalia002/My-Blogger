@@ -5,6 +5,7 @@ def index
 end
 
 def create
+  
 @comment = Comment.new
 @comment.comment =params[:comment][:comment]
     @comment.user_id = params[:comment][:user_id]

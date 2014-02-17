@@ -1,13 +1,53 @@
-
-TITLE-<%= @article.title %><br>
-<%= @article.body %>
-<% @article.comments.each do |d| %>
-<%= d.comment %>
-<% end %>
+<div class="container-fluid">     
+		<div class="row-fluid">
+				<div class="span6">
+					<h2 align="center"><%= @article.title %></h2><br/>
+                <br><div class="desc" align="justify"><%= @article.body %></div><br/>
+           
 <% @comment=Comment.new %>
-<%= render 'commentform' %>
+<% @id = @article.id %>
+ <% if user_signed_in? %> 
+		 	<%= render 'commentform' %>
+		 	<% if @comment.user==current_user %>
+				<br><br>
+				<%= link_to 'Edit', edit_comment_path(:id) %>
+			
+			<% end %>
+		<% end %>
+	</div>
+		<div class="span4 pull-right">
+			<div class="well">
+				<div class="media">
+					<div class="media-body">
+						<h3>RECENT COMMENTS</h3>
 
+		                   <% @article.comments.each do |d| %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> 
+		            		 <h4 class="media-heading"><%=link_to d.user.email, userprofile_path(id:  d.user.id) %> says </h4>
+
+	                                 <div class="media"><%= d.comment %></div>
+                                           <% if d.user==current_user %><%= link_to "edit" , edit_comment_path(:id=>d.id) %>
+			                                 <% end %>
+			                                       <% if user_signed_in? %>
+			                                   <% if current_user.email=="ankit3732@gmail.com" || d.user==current_user %><%= link_to "delete" ,comment_path(:id=>d.id) ,method: :delete  %>
+			                                    <% end %>
+		                                     <% end %>
+	               						      
+	                                          <% end %>
+	                           
+	              </div> 
+	           </div>
+	        </div>
+	    </div>
+
+	</div>
+		
+   <div class="btn">
 <%= link_to 'Back', articles_path %>
+	</div>
+
+</div>
+
+	     
+	   
 
