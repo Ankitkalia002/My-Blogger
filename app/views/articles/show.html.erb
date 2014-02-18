@@ -1,6 +1,6 @@
 <div class="container-fluid">     
 		<div class="row-fluid">
-				<div class="span6">
+				<div class="span5">
 					<h2 align="center"><%= @article.title %></h2><br/>
                 <br><div class="desc" align="justify"><%= @article.body %></div><br/>
            
@@ -15,39 +15,57 @@
 			<% end %>
 		<% end %>
 	</div>
+	 <div class="span3">
+    <%= image_tag @article.article_image(:large) %>
+</div>
 		<div class="span4 pull-right">
+      <h3 align="center">RECENT COMMENTS</h3>
 			<div class="well">
 				<div class="media">
-					<div class="media-body">
-						<h3>RECENT COMMENTS</h3>
+        
+					
+			
+		           <% @article.comments.each do |d| %>
+			         <br>
+			         <br>
+               <div class="media-body">
+                 <a class="pull-left" href="#">
+    <%=link_to (image_tag d.user.user_image(:thumb), :size => "50x50"),userprofile_path(id: d.user.id) %>
+    
+			                 <h4 class="media-heading"><%=link_to d.user.sab_name, userprofile_path(id: d.user.id) %>
+                             </h4>
+                           
+			                 
 
-		                   <% @article.comments.each do |d| %>
 
-		            		 <h4 class="media-heading"><%=link_to d.user.email, userprofile_path(id:  d.user.id) %> says </h4>
 
-	                                 <div class="media"><%= d.comment %></div>
-                                           <% if d.user==current_user %><%= link_to "edit" , edit_comment_path(:id=>d.id) %>
-			                                 <% end %>
-			                                       <% if user_signed_in? %>
-			                                   <% if current_user.email=="ankit3732@gmail.com" || d.user==current_user %><%= link_to "delete" ,comment_path(:id=>d.id) ,method: :delete  %>
-			                                    <% end %>
-		                                     <% end %>
-	               						      
-	                                          <% end %>
-	                           
-	              </div> 
-	           </div>
-	        </div>
-	    </div>
+	
+                      <div>  
+                                   <%= d.comment %>
+                      </div>
+             </div>
 
+			
+		           <% if d.user==current_user %><%= link_to "edit" , edit_comment_path(:id=>d.id) %>
+			       <% end %>
+			        <% if user_signed_in? %>
+			        <% if current_user.email=="ankit3732@gmail.com" || d.user==current_user %><%= link_to "delete" ,comment_path(:id=>d.id) ,method: :delete  %>
+			         <% end %>
+		              <% end %>
+		                <% end %>
+                    </div>
+	
 	</div>
+</div>
+	        </div>
+	   
 		
    <div class="btn">
 <%= link_to 'Back', articles_path %>
 	</div>
 
 </div>
-
+ </div>
 	     
 	   
 

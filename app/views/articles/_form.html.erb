@@ -1,7 +1,8 @@
-<%= form_for(@article , :remote => true) do |f| %>
-
- 
-<div align="center"><%= f.label :title %>
+<%= form_for(@article , :remote => true , :multipart => true, :authenticity_token => true) do |f| %>
+<div class="row-fluid">
+<div class="span6">
+ <div align="center">
+<%= f.label :title %>
 <%= f.text_field :title %><div id="errortext"></div>
 <br>
 <% if @article.errors.any? %>
@@ -16,7 +17,12 @@
     </div>
   <% end %>
 <%= f.text_area :body, size: "50x10", placeholder: "Enter description here" %>
+</div></div>
+ <div class="span4 pull-right"> <%= image_tag @article.article_image(:large) %>
   
+<%= f.file_field :photo %>
+</div>
+</div>
 
   <div class="actions">
     <%= f.submit %>

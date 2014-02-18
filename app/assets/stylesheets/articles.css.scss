@@ -8,9 +8,9 @@ height:60px;
 .myCarousel{
 height:500px;
 }
-.carousel-inner{height:500px;
+.carousel-inner{height:400px;
 }
-.desc{font-size:20px;
+.desc{
 }
 #article_body{
 width:500px;
@@ -21,7 +21,7 @@ height:300px;
 }
 .well{
 height: 400px;
-overflow-y: scroll;
+overflow-y: auto;
 }
 .span6{ height:400px;
 	margin-top:auto;
@@ -32,7 +32,8 @@ overflow-y: scroll;
 	margin-bottom:40px;
 }
 .container-fluid
-{background-image: url(http://subtlepatterns.com/patterns/ps_neutral.png); background-position: initial initial; background-repeat: initial initial;}
+{
+background-color: rgba(44, 134, 151, 0.31); background-position: initial initial; background-repeat: initial initial;}
 .carousel{
 	margin-bottom:0px;
 }
@@ -42,3 +43,23 @@ padding-top: 20px;
 padding-bottom: 20px;
 margin:0px;}
 #errortext{display:inline-block;}
+.span3{height:290px;}
+img{height:100%;}
+#comment_comment{width: 310px;
+height: 20px;}
+.comment{
+display:inline-block;
+}
+.commentelements{
+display:inline-block;
+vertical-align: top;
+}
+.well{
+background-color:rgba(255, 255, 255, 0.25)
+}
+a:link{text-decoration:none;}
+.media-heading
+{
+display:inline-block;
+vertical-align: top;
+}

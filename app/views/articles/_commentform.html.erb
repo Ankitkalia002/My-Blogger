@@ -1,13 +1,16 @@
- 
+ <div class="comment">
 <%= form_for(@comment) do |f| %>
+<div class="commentelements">
  <%= f.text_area :comment, size: "100x05", placeholder: "Enter Comment here" %>
 
 <%= f.hidden_field :article_id, :value=> @id %>
 <%= f.hidden_field :user_id, :value=> current_user.id %>
-
-  
+</div>
+  <div class="commentelements">
 
   <div class="actions">
-   <%= f.submit %>
+   <%= f.submit :class => "btn btn-normal" %>
   </div>
+</div>
 <% end %>
+</div>

@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 def index
 @articles=Article.all.paginate(:page => params[:page],:per_page =>1)
 
+
 @comment=Comment.all
 end
 def new
@@ -18,6 +19,10 @@ def edit
     @article=Article.find(params[:id])
     @article.title=params[:article][:title]
     @article.body=params[:article][:body]
+    if params[:article][:photo] != nil
+    @article.photo =params[:article][:photo]
+  
+    end
     respond_to do |format|
 
       if @article.update(article_params)
@@ -32,16 +37,21 @@ def edit
   end
 
 def create
+  
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.body=params[:article][:body]
+     if params[:article][:photo] != nil
+    @article.photo =params[:article][:photo]
+    debugger
+    end
     
       if @article.save
 
         #redirect_to articles_path
-        respond_to do |format|
-          format.js { render 'articlesave' }
-        end  
+        # respond_to do |format|
+          redirect_to articles_path
+        # end  
         #format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
         
       else

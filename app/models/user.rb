@@ -19,5 +19,13 @@ return photo.url(size)
 return "/assets/User_#{size}.png"
 end
 end
+def sab_name
+if name.present?
+return name
+   else
+return "Guest"
+end
+end
+
                
 end

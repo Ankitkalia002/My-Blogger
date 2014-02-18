@@ -19,15 +19,14 @@
 
 	                  <% @articles.each do |article| %> 
 	<div class="container-fluid">  
-  <div class="flipbox-container">
-    <div class="flipbox">
    
 		<div class="row-fluid">
-			<b align="center">
-				   <div class="span6">
-				   	   <h2><%=link_to article.title, article_path(:id=>article.id) %></h2></b>
+			
+				   <div class="span5">
+				   	   <h2><%=link_to article.title, article_path(:id=>article.id) %></h2>
 			            <br><br>
-			<%= article.body %>
+			<div align="justify"><%= article.body %></div>
+     <br><br>
     <% @comment=Comment.new %>
     <% @id = article.id %>
      <% if user_signed_in? %> 
@@ -39,22 +38,38 @@
           <% end %>
             <% end %>
             </div>
+             <div class="span3">
+            
+              <br>
+    <%= image_tag article.article_image(:large),:size => "300x300" %>
+</div>
 			
 		<div class="span4 pull-right">
+      <h3 align="center">RECENT COMMENTS</h3>
 			<div class="well">
 				<div class="media">
-					<div class="media-body">
+        
+					
 			
-		           <h3>RECENT COMMENTS</h3><% article.comments.each do |d| %>
+		           <% article.comments.each do |d| %>
 			         <br>
 			         <br>
-			                 <h4 class="media-heading"><%=link_to d.user.email, userprofile_path(id: d.user.id) %> says
+               <div class="media-body">
+                 <a class="pull-left" href="#">
+    <%=link_to (image_tag d.user.user_image(:thumb), :size => "50x50"),userprofile_path(id: d.user.id) %>
+    
+			                 <h4 class="media-heading"><%=link_to d.user.sab_name, userprofile_path(id: d.user.id) %>
                              </h4>
+                           
 			                 
 
 
 
-		<div class="media"><%= d.comment %></div>
+	
+                      <div>  
+                                   <%= d.comment %>
+                      </div>
+             </div>
 
 			
 		           <% if d.user==current_user %><%= link_to "edit" , edit_comment_path(:id=>d.id) %>
@@ -64,27 +79,18 @@
 			         <% end %>
 		              <% end %>
 		                <% end %>
-		 </div>
+                    </div>
+	
 	</div>
 </div>
 </div>
 	
 		    </div>
 	</div>
-</div>
-</div>
       
 	<% end %>
-	 
-<ul class="pager">
-  <li class="previous">
-    <a href="#" >&larr; Older</a>
-  </li>
-  <li class="next">
-    <a id="btn-bottom" href="#" class="btn" rel="tb">Newer &larr;</a>
-  </li>
-</ul>
-	<li><%= will_paginate @articles %>
+
+<%= will_paginate @articles %>
 <script>
 $(window).resize(function(){
     $("html").width($(window).width());
