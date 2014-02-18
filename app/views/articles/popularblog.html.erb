@@ -1,0 +1,12 @@
+<div id="slideout">
+  <i class="icon-search icon-fast-forward"></i>
+  <div id="slideout_inner">
+ <h6> popular blogs </h6>
+    <% @articles.each do |t| %>
+    <div>
+    <h2><%=link_to t.title, article_path(:id=>t.id) %></h2>
+
+</div>
+<%end %>
+  </div>
+</div>
