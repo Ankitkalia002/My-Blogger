@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140217174651) do
-=======
-ActiveRecord::Schema.define(version: 20140217073611) do
->>>>>>> 22a9b2590f5382dd0e2df41825926be6a254b913
+ActiveRecord::Schema.define(version: 20141216122204) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -24,14 +20,11 @@ ActiveRecord::Schema.define(version: 20140217073611) do
     t.string   "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
+    t.integer  "comments_count",     default: 0, null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-=======
-    t.integer  "comments_count", default: 0, null: false
->>>>>>> 22a9b2590f5382dd0e2df41825926be6a254b913
   end
 
   create_table "comments", force: true do |t|
@@ -42,7 +35,16 @@ ActiveRecord::Schema.define(version: 20140217073611) do
     t.datetime "updated_at"
   end
 
-  create_table "userprofiles", force: true do |t|
+  create_table "customer_cards", force: true do |t|
+    t.integer  "customer_id"
+    t.text     "card"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "stripe_card_token"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

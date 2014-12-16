@@ -42,14 +42,10 @@ def edit
   end
 
 def create
-  
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.body=params[:article][:body]
-     if params[:article][:photo] != nil
-    @article.photo =params[:article][:photo]
-    debugger
-    end
+    
     
       if @article.save
 
@@ -85,7 +81,7 @@ def create
       params[:article]
     end
     def article_params
-      params.require(:article).permit(:title, :user_id, :body, :article_id)
+      params.require(:article).permit(:title, :user_id, :body, :article_id,:photo)
     end
 
 end

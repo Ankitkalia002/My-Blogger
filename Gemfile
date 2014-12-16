@@ -49,6 +49,7 @@ end
  gem 'debugger', group: [:development, :test]
 gem 'devise'
 gem 'will_paginate'
+gem 'stripe'
 gem 'paperclip'
 gem 'rmagick'
 gem 'bootstrap-datepicker-rails'

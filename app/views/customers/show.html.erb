@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+How Much AMount you Want to pay
+<%= text_field_tag :amount %>
+<%=  submit_tag :pay %>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

@@ -1,4 +1,8 @@
 Blogger::Application.routes.draw do
+  resources :customer_cards
+
+  resources :customers
+
   devise_for :users
   root "articles#index"
   resources :articles
